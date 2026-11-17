@@ -1,0 +1,709 @@
+@font-face {
+    font-family: 'Disney-font';
+    src: url('./fonts/Waltograph-JpdB7.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    color-scheme: light;
+    --berry: #a92859;
+    --rose: #e75480;
+    --cream: #fffaf3;
+    --gold: #f6d78d;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    position: sticky;
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100svh;
+    background: linear-gradient(150deg, #ffd1dc, #e75480);
+    color: var(--berry);
+    font-family: 'Disney-font', Georgia, serif;
+    overflow-x: hidden;
+}
+
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    width: 36rem;
+    height: 36rem;
+    border: 1px solid rgba(255, 255, 255, .22);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+body::before {
+    top: -25rem;
+    left: -12rem;
+    box-shadow: 0 0 0 32px rgba(255, 255, 255, .06),
+                0 0 0 64px rgba(255, 255, 255, .04);
+}
+
+body::after {
+    bottom: -29rem;
+    right: -14rem;
+    box-shadow: 0 0 0 32px rgba(255, 255, 255, .06),
+                0 0 0 64px rgba(255, 255, 255, .04);
+}
+
+main {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    padding: 28px 18px;
+}
+
+.gate,
+.birthday {
+    width: min(100%, 680px);
+}
+
+.gate-card,
+.birthday-card {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, .75);
+    border-radius: 28px;
+    background: rgba(255, 250, 243, .94);
+    box-shadow: 0 26px 80px rgba(112, 23, 62, .24),
+                inset 0 0 0 7px rgba(255, 255, 255, .35);
+}
+
+.gate-card {
+    padding: clamp(34px, 8vw, 64px) clamp(24px, 8vw, 72px);
+}
+
+.birthday-card {
+    padding: 28px clamp(24px, 7vw, 70px) 32px;
+}
+
+.gate-card::before,
+.birthday-card::before {
+    content: '';
+    position: absolute;
+    inset: 13px;
+    border: 1px solid rgba(231, 84, 128, .22);
+    border-radius: 20px;
+    pointer-events: none;
+}
+
+.small-crown {
+    color: var(--rose);
+    font-family: Georgia, serif;
+    font-size: 35px;
+    line-height: 1;
+    margin-bottom: 16px;
+}
+
+.eyebrow {
+    margin: 0;
+    color: #bc5677;
+    text-transform: uppercase;
+}
+
+h1 {
+    margin: 12px 0;
+    font-size: clamp(48px, 11vw, 76px);
+    line-height: .98;
+    font-weight: 400;
+    letter-spacing: .015em;
+}
+
+.gate-copy {
+    max-width: 330px;
+    margin: 20px auto 26px;
+    color: #875166;
+    font-size: 1000px;
+}
+
+form {
+    max-width: 350px;
+    margin: 0 auto;
+}
+
+input {
+    width: 100%;
+    height: 52px;
+    border: 1px solid #e8b5c5;
+    border-radius: 999px;
+    padding: 0 20px;
+    outline: none;
+    background: #fff;
+    color: #65364a;
+    font: 15px Arial, sans-serif;
+    text-align: center;
+    transition: border-color .2s, box-shadow .2s;
+}
+
+input:focus {
+    border-color: var(--rose);
+    box-shadow: 0 0 0 4px rgba(231, 84, 128, .14);
+}
+
+input::placeholder {
+    color: #bc91a0;
+}
+
+button {
+    border: 0;
+    cursor: pointer;
+    font-family:cursive;
+}
+
+form button {
+    width: 100%;
+    min-height: 52px;
+    margin-top: 12px;
+    border-radius: 999px;
+    background: linear-gradient(110deg, #c63869, #ec6f94);
+    box-shadow: 0 9px 20px rgba(198, 56, 105, .24);
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    transition: transform .2s, box-shadow .2s;
+}
+
+form button:hover,
+.replay:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(198, 56, 105, .28);
+}
+
+form button span {
+    margin-left: 5px;
+    font-size: 18px;
+}
+
+.hint {
+    margin: 15px 0 0;
+    color: #b27b8f;
+    font: 12px Arial, sans-serif;
+}
+
+.error {
+    min-height: 18px;
+    margin: 8px 0 0;
+    color: #ad2448;
+    font: 13px Arial, sans-serif;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.birthday-card {
+    animation: arrive .8s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+.castle {
+    position: relative;
+    width: min(100%, 300px);
+    margin: 20px auto 8px;
+}
+
+.castle svg {
+    display: block;
+    width: 100%;
+    filter: drop-shadow(0 7px 2px rgba(126, 42, 75, .09));
+}
+
+.castle-main {
+    fill: #f1adc0;
+    stroke: #d86a8a;
+    stroke-width: 2;
+}
+
+.castle-top {
+    fill: #e77f9d;
+    stroke: #d45d80;
+    stroke-width: 2;
+}
+
+.castle-detail {
+    fill: #fff2e9;
+}
+
+.castle-window {
+    fill: none;
+    stroke: #ca6281;
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+
+.castle-shadow {
+    fill: #e9a3b8;
+}
+
+.flag {
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    color: #e4b952;
+    font-size: 25px;
+    animation: twinkle 2s ease-in-out infinite;
+}
+
+.sparkle {
+    position: absolute;
+    color: #efbe54;
+    font-family: Georgia, serif;
+    line-height: 1;
+    text-shadow: 0 0 9px rgba(255, 255, 255, .9);
+    animation: twinkle 1.8s ease-in-out infinite;
+}
+
+.sparkle-one {
+    top: 16%;
+    left: 12%;
+    font-size: 24px;
+}
+
+.sparkle-two {
+    top: 42%;
+    right: 9%;
+    font-size: 19px;
+    animation-delay: .55s;
+}
+
+.sparkle-three {
+    top: 5%;
+    right: 23%;
+    font-size: 15px;
+    animation-delay: 1s;
+}
+
+.birthday h1 {
+    margin: 10px 0 14px;
+    font-size: clamp(46px, 9vw, 68px);
+}
+
+.birthday h1 span {
+    color: #df4e7c;
+}
+
+.message {
+    max-width: 470px;
+    margin: 0 auto;
+    color: #805064;
+    font: 16px/1.7 Georgia, serif;
+}
+
+.birthday-ribbon {
+    display: inline-block;
+    margin-top: 21px;
+    padding: 11px 18px;
+    border-top: 1px solid #e8b8c7;
+    border-bottom: 1px solid #e8b8c7;
+    color: #bc5677;
+    font-size: clamp(16px, 3.8vw, 20px);
+}
+
+.birthday-ribbon span {
+    color: #e75480;
+}
+
+.replay {
+    display: block;
+    margin: 21px auto 0;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: transparent;
+    color: #a85b75;
+    font-size: 12px;
+    transition: transform .2s, box-shadow .2s;
+}
+
+.replay:hover {
+    box-shadow: none;
+}
+
+.sparkles {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.sparkles::before,
+.sparkles::after {
+    content: '✦  ·  ✧      ·       ✦       ·    ✧       ·';
+    position: absolute;
+    width: 100%;
+    color: rgba(255, 255, 255, .74);
+    font: 17px Georgia, serif;
+    letter-spacing: 2vw;
+    animation: drift 20s linear infinite;
+}
+
+.sparkles::before {
+    top: 12%;
+    left: 2%;
+}
+
+.sparkles::after {
+    bottom: 13%;
+    left: 4%;
+    animation-duration: 26s;
+    animation-direction: reverse;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+@keyframes arrive {
+    from {
+        opacity: 0;
+        transform: translateY(16px) scale(.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        transform: translateX(-50%) scale(.8) rotate(-10deg);
+        opacity: .65;
+    }
+    50% {
+        transform: translateX(-50%) scale(1.2) rotate(10deg);
+        opacity: 1;
+    }
+}
+
+@keyframes drift {
+    from { transform: translateX(0); }
+    to { transform: translateX(-12%); }
+}
+
+@media (max-width: 480px) {
+    main {
+        padding: 18px 14px;
+    }
+
+    .birthday-card {
+        padding-top: 28px;
+    }
+
+    .message {
+        font-size: 15px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+.clock-div {
+    display: grid;
+    justify-items: center;
+    gap: 14px;
+}
+
+.clock-date {
+    margin: 0;
+    color: #a85b75;
+    font: 600 11px Arial, sans-serif;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+.clock-date {
+    color: #bc5677;
+    letter-spacing: .08em;
+}
+
+.clock-face {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: min(100%, 520px);
+    min-height: 210px;
+    padding: 34px 24px;
+    border: 7px double #d8a63b;
+    border-radius: 32px;
+    background: linear-gradient(145deg, #fffefa, #fff0d0);
+    box-shadow:
+        0 18px 42px rgba(166, 54, 94, .22),
+        inset 0 0 0 7px rgba(255, 255, 255, .9),
+        inset 0 0 0 10px rgba(231, 84, 128, .2);
+}
+
+.clock-face::before {
+    content: '';
+    position: absolute;
+    inset: 10px;
+    border: 1px solid rgba(198, 56, 105, .2);
+    border-radius: 22px;
+    pointer-events: none;
+}
+
+.clock-readout {
+    display: grid;
+    margin:auto;
+    grid-template-columns:auto;
+    align-items: center;
+    justify-items: center;
+    gap: 9px 20px;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    font-variant-numeric: tabular-nums;
+}
+
+.clock-days {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    color: #a13f62;
+}
+
+.clock-days > span {
+    font-size: clamp(38px, 5vw, 58px);
+    line-height: 1;
+}
+
+.clock-days small {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+}
+
+.clock-time {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #c63869;
+    font-size: clamp(32px, 4.6vw, 48px);
+    line-height: 1;
+}
+
+.clock-time i {
+    color: #d88ca4;
+    font-style: normal;
+    animation: colonPulse 1s steps(2, start) infinite;
+}
+
+.clock-time-label {
+    grid-column: 1 / -1;
+    color: #956477;
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+@keyframes colonPulse {
+    to {
+        opacity: .35;
+    }
+}
+
+@media (max-width: 480px) {
+    .clock-face {
+        min-height: 175px;
+        padding: 28px 18px;
+    }
+
+    .clock-readout {
+        gap: 8px 12px;
+    }
+
+    .clock-days > span {
+        font-size: 34px;
+    }
+
+    .clock-time {
+        gap: 2px;
+        font-size: clamp(22px, 7vw, 32px);
+    }
+}
+
+body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.countdown-clock {
+    display: grid;
+    grid-template-columns: auto;
+    justify-items: center;
+    gap: 12px;
+    margin: 24px auto 0;
+    width: min(calc(100% - 32px), 720px);}
+
+.clock-face {
+    width: 100%;
+    min-height: 170px;
+    padding: 28px 24px;
+    border: 6px double #d8a63b;
+    border-radius: 28px;
+    background: linear-gradient(145deg, #fffefa, #fff0d0);
+    box-shadow:
+        0 14px 34px rgba(166, 54, 94, .18),
+        inset 0 0 0 6px rgba(255, 255, 255, .85);
+}
+
+.clock-readout {
+    display: grid;
+    grid-template-columns: auto;
+    align-items: center;
+    justify-self: center;
+    gap: 10px 20px;
+    width: 100%;
+    margin: auto;
+    font-family: 'Disney-font';
+    font-variant-numeric: tabular-nums;
+}
+
+
+.clock-time-label {
+    grid-column: 1 / -1;
+}
+
+main {
+    width: 100%;
+    min-height: calc(100vh - 250px);
+    min-height: calc(100svh - 250px);
+    display: grid;
+    place-items: center;
+    padding: 18px;
+}
+
+.gate-card h1 {
+    font-size: clamp(44px, 9vw, 60px);
+}
+
+
+.gate-copy {
+    margin: 14px auto 20px;
+    font-size: 15px;
+}
+
+.gate form {
+    max-width: 300px;
+}
+
+@media (max-width: 480px) {
+    .countdown-clock {
+        width: calc(100% - 24px);
+        margin-top: 16px;
+    }
+
+    .clock-face {
+        min-height: 145px;
+        padding: 22px 12px;
+    }
+
+    .clock-readout {
+        gap: 8px 10px;
+    }
+
+    .clock-time {
+        font-size: clamp(21px, 6.5vw, 30px);
+        gap: 2px;
+    }
+
+    main {
+        min-height: calc(100svh - 210px);
+        padding: 18px 14px;
+    }
+}
+
+.video{
+    padding: 10px;
+    width:fit-content;
+    height:20rem;
+    overflow: hidden;
+}
+
+.video video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+#customAlert {
+    width: min(90%, 380px);
+    padding: 28px;
+    border: 1px solid #e8b5c5;
+    border-radius: 20px;
+    background: #fffaf3;
+    color: #a92859;
+    text-align: center;
+    box-shadow: 0 18px 50px rgba(112, 23, 62, .28);
+  }
+  
+  #customAlert[open] {
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    gap: 16px;
+  }
+  
+  #customAlert::backdrop {
+    background: rgba(70, 30, 48, .45);
+    backdrop-filter: blur(3px);
+  }
+  
+  #customAlert button {
+    min-width: 110px;
+    padding: 11px 20px;
+    border: 0;
+    border-radius: 999px;
+    background: linear-gradient(110deg, #c63869, #ec6f94);
+    color: white;
+    font: 700 16px Arial, sans-serif;
+    cursor: pointer;
+  }
+
+
+#confetti {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+  
+#confetti-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    background: url("confetti2.gif") center / cover no-repeat;
+  }

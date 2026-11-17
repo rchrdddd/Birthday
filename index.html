@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#e75480">
+    <title>November 20th</title>
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body id = "body">
+    <img id="confetti" src="confetti2.gif" alt="" hidden>
+    <div class="sparkles" aria-hidden="true"></div>
+    <aside class="countdown-clock" aria-label="Live countdown to midnight on November 20">
+        <div class="clock-face" id="countdown" aria-live="polite">
+            <div class="clock-readout">
+                
+                <strong class="clock-time">
+                    <span id="days">--</span><i>:</i>
+                    <span id="hours">--</span><i>:</i>
+                    <span id="minutes">--</span><i>:</i>
+                    <span id="seconds">--</span>
+                </strong>
+
+                <span class="clock-time-label">days · hours · minutes · seconds</span>
+            </div>
+        </div>
+    </aside>
+
+    <main>
+        <section class="gate" id="gate" aria-labelledby="gate-title">
+            <div class="gate-card">
+                <div class="small-crown" aria-hidden="true">✦</div>
+                <p class="eyebrow">The birthday girls awaits</p>
+                <h1 id="gate-title" styl><em>Isabella</em></h1>
+                <p class="gate-copy">unlock the suprise by typing in the password</p>
+                <form id="password-form">
+                    <label class="visually-hidden" for="password">Secret password</label>
+                    <input
+                        id="password"
+                        name="password"
+                        type="password"
+                        placeholder="Enter the secret word"
+                        autocomplete="off"
+                        required
+                    >
+                    <button type="submit">
+                        <span>✧ <strong>Unlock</strong> ✧</span>
+                    </button>
+                    <p class="hint">The hint will drop on your birthday day✨</p>
+                    <p class="error" id="error" role="alert" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+        
+
+
+
+        <section class="birthday" id="birthday" aria-labelledby="birthday-title" hidden>
+            <div class="birthday-card">
+                <h1 id="birthday-title">
+                    Happy Birthday,<br>
+                    <span>Bella!</span>
+                </h1>
+                <p class="message">
+                    Happy 20th birthday isa, a blessing to everyone's life 🎉
+                </p>
+
+                <div class="castle" aria-hidden="true">
+                    <span class="flag">✦</span>
+                    <span class="sparkle sparkle-one">✧</span>
+                    <span class="sparkle sparkle-two">✦</span>
+                    <span class="sparkle sparkle-three">✧</span>
+                    <span class="sparkle sparkle-four">✦</span>
+                </div>
+
+                <div class="video">
+                    <video id = "birthday-video" controls playsinline preload="metadata" >
+                        <source src = "video.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="castle" aria-hidden="true">
+                    <span class="flag">✦</span>
+                    <span class="sparkle sparkle-one">✧</span>
+                    <span class="sparkle sparkle-two">✦</span>
+                    <span class="sparkle sparkle-three">✧</span>
+                </div>
+
+                <div class="birthday-ribbon">
+                    Wishing you the best birthday of all <span aria-hidden="true">♡</span>
+                </div>
+
+                <button class="replay" id="replay" type="button">Close surprise</button>
+            </div>
+        </section>
+
+        <dialog id="customAlert">
+            <h2 id="alertMessage"></h2>
+            <button onclick="document.getElementById('customAlert').close()">OK</button>
+          </dialog>
+
+    </main>
+    <script src="index.js"></script>
+    <script src = "timer.js"></script>
+    <script>
+
+
+const video = document.getElementById('birthday-video');
+const button = document.getElementById('play-pause');
+button.addEventListener('click', () => {
+    if(!video.paused){
+        video.play();
+    } else {
+        video.pause();
+    }
+});
+video.addEventListener('play', () => {
+    button.textContent = '❚❚';
+    button.setAttribute('aria-label', 'Pause video');
+});
+
+video.addEventListener('pause', () => {
+    button.textContent = '▶';
+    button.setAttribute('aria-label', 'Play video');
+});
+
+
+    </script>
+</body>
+</html>
