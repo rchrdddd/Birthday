@@ -5,7 +5,7 @@ const birthday = document.getElementById('birthday');
 const replay = document.getElementById('replay');
 const confetti = document.getElementById('confetti');
 
-const password = 'bella20';
+const password = 'bella20birthday';
 let confettiTimer;
 
 form.addEventListener('submit', (event) => {
